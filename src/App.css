@@ -1,0 +1,121 @@
+.App {
+   /*text-align: center;*/
+}
+
+.App-header {
+  background-color: #00b298;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+a.app-link {
+  color: #00b298;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+/*// PROGRESS */
+
+.progress-section {
+  background-color: #F1F1F1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+/*// INPUTS */
+
+.input-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.investment-input-row {
+  margin-top: 30px;
+}
+
+.input-label {
+  font-weight: 700;
+  color: #5b5b5b;
+}
+
+.form-control.input-incomplete {
+  border: 1px solid #d23d3d8f;
+}
+
+.form-control.input-validated {
+  border: 1px solid #00b3988a;
+}
+
+/*// REPORT */
+
+.investment-report-container {
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  background-color: #f1f1f1a6;
+}
+
+.report-outcome-row {
+  padding-top: 10px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid cadetblue;
+}
+
+.report-outcome-value {
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.report-outcome-name {
+  color: #5b5b5b;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.report-outcome-description {
+  color: #6E6E6E;
+  font-size: 13px;
+}
+
+/*INPUT COMMENTARY*/
+
+.input-commentary-container {
+  border: 2px solid #DFDFDF;
+  border-radius: 12px;
+  text-align: left;
+  padding: 10px;
+}
+
+.note-dark {
+  color: #0e6b64;
+  font-weight: bold;
+}
+
+ul.notes {
+  font-size: 13px;
+  color: #343a40;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.note-warning {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.note-valid {
+  color: #20c997;
+  font-weight: bold;
+}
