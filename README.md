@@ -2,8 +2,6 @@
 
 I developed this toy project with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-You can find the most recent version of the Create React App guide on GitHub [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
-
 ### Demo
 [https://jordanhiltunen.github.io/tfsa_rrsp_calculator/](https://jordanhiltunen.github.io/tfsa_rrsp_calculator/)
 
@@ -24,7 +22,7 @@ From the [React Docs](https://reactjs.org/docs/add-react-to-a-new-app.html):
 
 Download the project to your local development machine.
  
-To install the node packages required by the application, run the following command in the project's directory:
+To install the Node packages required by the application, run the following command in the project's directory:
 
 #### `npm install` 
  
