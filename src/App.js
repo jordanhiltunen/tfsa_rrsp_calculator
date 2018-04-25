@@ -128,8 +128,7 @@ class App extends Component {
 
 
               <div className="container input-container">
-                  <h2 className="text-center">Investment Scenario</h2>
-                  <br/>
+                  <h2 className="text-center investment-form-header">Investment Scenario</h2>
 
 
                   <InvestmentScenarioForm

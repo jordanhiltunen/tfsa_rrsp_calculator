@@ -35,6 +35,10 @@ a.app-link {
 
 /*// INPUTS */
 
+.investment-form-header {
+  padding-bottom: 25px;
+}
+
 .input-container {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -81,7 +85,7 @@ a.app-link {
 .report-outcome-name {
   color: #5b5b5b;
   font-weight: bold;
-  padding-top: 10px;
+  margin-top: 15px;
 }
 
 .report-outcome-description {

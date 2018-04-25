@@ -67,8 +67,7 @@ class InvestmentReport extends React.Component {
                 </div>
 
 
-                <br/>
-                <span className="report-outcome-name">After-Tax Deposit</span><br/>
+                <div className="report-outcome-name">After-Tax Deposit</div>
                 <p className="report-outcome-description">
                     Contributions made to RRSPs are 'pre-tax' - they entitle you to a tax deduction,
                     in essence allowing you to contribute a portion of your income without paying
@@ -93,8 +92,8 @@ class InvestmentReport extends React.Component {
                     </div>
                 </div>
 
-                <br/>
-                <span className="report-outcome-name">Future Value</span>
+
+                <div className="report-outcome-name">Future Value</div>
                 <p className="report-outcome-description">
                     The value of your accounts in the future, taking into consideration
                     your original amounts, your expected rate of return, a hypothetical inflation rate,
@@ -112,8 +111,7 @@ class InvestmentReport extends React.Component {
                 </div>
 
 
-                <br/>
-                <span className="report-outcome-name">Tax Paid Upon Withdrawal</span><br/>
+                <div className="report-outcome-name">Tax Paid Upon Withdrawal</div>
                 <p className="report-outcome-description">
                     Withdrawals from TFSAs are tax-free, whereas withdrawals from RRSPs are taxed at
                     your marginal tax rate (determined by your annual income at the time of
@@ -131,14 +129,13 @@ class InvestmentReport extends React.Component {
                     </div>
                 </div>
 
-                <br/>
-                <span className="report-outcome-name">After-Tax Future Value</span>
+
+                <div className="report-outcome-name">After-Tax Future Value</div>
                 <p className="report-outcome-description">
                     The future value of your investments (minus your tax withdrawal obligations),
                     if you were to withdraw the entire balance from both accounts at once at the
                     conclusion of your chosen investment period.
                 </p>
-
 
                 <div className="row report-outcome-row">
                     <div className="col-md-6 report-outcome-value">
