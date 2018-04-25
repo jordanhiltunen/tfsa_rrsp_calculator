@@ -88,7 +88,7 @@ function estimateIncomeByTaxRate(taxRate) {
 
     if (isInputValid(taxRate)) {
 
-        var i; // https://stackoverflow.com/questions/31120478/uncaught-referenceerror-i-is-not-defined
+        let i; // https://stackoverflow.com/questions/31120478/uncaught-referenceerror-i-is-not-defined
         for (i = 0; i < taxBrackets.length-1; i++) {
 
             if (inRange(taxRate, taxBrackets[i][0], taxBrackets[i+1][0])) {

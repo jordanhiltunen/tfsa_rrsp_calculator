@@ -14,8 +14,8 @@ class ProgressBar extends Component {
 
     calculateProgressPercentage() {
 
-        var progressCount      = this.props.progressCount || 0;
-        var progressPercentage = (progressCount / this.props.inputCount) * 100;
+        const progressCount = this.props.progressCount || 0;
+        const progressPercentage = (progressCount / this.props.inputCount) * 100;
 
         return progressPercentage;
 
@@ -28,8 +28,8 @@ class ProgressBar extends Component {
         // while our calculator only has six inputs, there are extra colors in the array to allow for
         // the addition of extra input fields without breaking the progress bar.
 
-        var progressCount = this.props.progressCount || 0;
-        var colorPosition = ((colors.length - 1) - (this.props.inputCount - progressCount));
+        const progressCount = this.props.progressCount || 0;
+        const colorPosition = ((colors.length - 1) - (this.props.inputCount - progressCount));
 
         return colors[colorPosition];
 

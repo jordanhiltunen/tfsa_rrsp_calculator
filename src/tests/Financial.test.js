@@ -36,7 +36,7 @@ test('Calculate the future value of an account with only return rate specified',
     const yearsInvested = 1;
     const returnOnInvestment = 5;
 
-    var outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
+    const outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
     expect(outcome).toEqual(1050);
 });
 
@@ -46,7 +46,7 @@ test('Calculate the future value of an account with only inflation rate specifie
     const yearsInvested = 1;
     const returnOnInvestment = null;
 
-    var outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
+    const outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
     // outcome is returned as a float; we need to convert to an integer
     expect(parseInt(outcome, 10)).toEqual(952);
 });
@@ -57,7 +57,7 @@ test('Calculate the future value of an account with inflation and return rate sp
     const yearsInvested = 1;
     const returnOnInvestment = 5;
 
-    var outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
+    const outcome = calculateFutureAccountValue(depositValue, returnOnInvestment, inflation, yearsInvested);
     // outcome is returned as a float; we need to convert to an integer
     expect(parseInt(outcome, 10)).toEqual(1019);
 });
@@ -71,7 +71,7 @@ test('Calculate the tax paid on withdraw for an account subject to taxes', () =>
     const retirementTaxRate = 40;
     const withdrawTaxable = true;
 
-    var outcome = calculateTaxPaidUponWithdrawal(accountValue, retirementTaxRate, withdrawTaxable);
+    const outcome = calculateTaxPaidUponWithdrawal(accountValue, retirementTaxRate, withdrawTaxable);
     expect(outcome).toEqual(400);
 });
 
@@ -80,7 +80,7 @@ test('Calculate the tax paid on withdraw for an account NOT subject to taxes', (
     const retirementTaxRate = 40;
     const withdrawTaxable = false;
 
-    var outcome = calculateTaxPaidUponWithdrawal(accountValue, retirementTaxRate, withdrawTaxable);
+    const outcome = calculateTaxPaidUponWithdrawal(accountValue, retirementTaxRate, withdrawTaxable);
     expect(outcome).toEqual(0);
 });
 
@@ -92,7 +92,7 @@ test('Calculate the value of an account minus tax deductions', () => {
     const accountValue = 1000;
     const taxDeduction = 600;
 
-    var outcome = calculateAfterTaxFutureAccountValue(accountValue, taxDeduction);
+    const outcome = calculateAfterTaxFutureAccountValue(accountValue, taxDeduction);
     expect(outcome).toEqual(400);
 });
 
@@ -104,7 +104,7 @@ test('Calculate the Real Rate of Return', () => {
     const nominalRate = 5;
     const inflationRate = 3;
 
-    var outcome = calculateRealRateOfReturn(nominalRate, inflationRate);
+    let outcome = calculateRealRateOfReturn(nominalRate, inflationRate);
     outcome = roundNumber((100 * outcome), 3);
 
     expect(outcome).toEqual(1.942);
@@ -117,7 +117,7 @@ test('Calculate the Real Rate of Return', () => {
 test('Convert Percentages to Decimals', () => {
     const percentage = 10;
 
-    var outcome = percentageToDecimal(percentage);
+    const outcome = percentageToDecimal(percentage);
 
     expect(outcome).toEqual(0.10);
 });
@@ -129,7 +129,7 @@ test('Convert Percentages to Decimals', () => {
 test('Estimate Tax Bracket by Tax Rate', () => {
     const taxRate = 42.5;
 
-    var outcome = estimateIncomeByTaxRate(taxRate);
+    const outcome = estimateIncomeByTaxRate(taxRate);
 
     expect(outcome).toEqual("$110,631 - $144,489");
 });
