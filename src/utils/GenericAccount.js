@@ -14,6 +14,7 @@ class GenericAccount {
     // ----------------------------
     // SETTERS
     // ----------------------------
+
     // taxation characteristics
     set depositTaxable(depositTaxable)         { this._depositTaxable = depositTaxable; }
     set withdrawTaxable(withdrawTaxable)       { this._withdrawTaxable = withdrawTaxable; }
@@ -42,22 +43,10 @@ class GenericAccount {
     // GETTERS
     // ----------------------------
 
-    afterTaxDeposit() {
-        return this._afterTaxDeposit;
-    }
-
-    futureAccountValue() {
-        return this._futureAccountValue;
-    }
-
-    taxPaidUponWithdrawal() {
-        return this._taxPaidUponWithdrawal;
-    }
-
-    afterTaxFutureAccountValue() {
-        return this._afterTaxFutureAccountValue;
-    }
-
+    get afterTaxDeposit()            { return this._afterTaxDeposit; }
+    get futureAccountValue()         { return this._futureAccountValue; }
+    get taxPaidUponWithdrawal()      { return this._taxPaidUponWithdrawal; }
+    get afterTaxFutureAccountValue() { return this._afterTaxFutureAccountValue; }
 
 }
 

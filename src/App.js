@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import ProgressBar from "./components/ProgressBar";
-import GenericTextInput from "./components/GenericTextInput";
-import InvestmentReport from "./components/InvestmentReport";
-import {handleInteger, handlePercentage, handleDollar, isInputValid} from "./utils/InputHandling";
+import InvestmentScenarioForm from "./components/InvestmentScenarioForm";
 import InputCommentary from "./components/InputCommentary";
-
-
+import InvestmentReport from "./components/InvestmentReport";
+import {isInputValid} from "./utils/InputHandling";
 
 class App extends Component {
 
@@ -17,8 +15,18 @@ class App extends Component {
 
         this.state = {
 
-            // inputs
-            inputs: {
+            // decorated string representations of user input
+            stringInputValues: {
+                depositAmount: '',
+                marginalTaxRate: '',
+                averageRetirementTaxRate: '',
+                yearsInvested: '',
+                inflationRate: '',
+                returnOnInvestment: '',
+            },
+
+            // numeric representations of user input
+            numericInputValues: {
                 depositAmount: null,
                 marginalTaxRate: null,
                 averageRetirementTaxRate: null,
@@ -40,39 +48,40 @@ class App extends Component {
 
     calculateProgressCount(target, numericValue) {
 
-        var progressIncrement;
+        let progressIncrement;
 
-        var previousValue = this.state.inputs[target.name];
+        const previousValue = this.state.numericInputValues[target.name];
 
-        var previousValueValidity = isInputValid(previousValue);
-        var currentValueValidity  = isInputValid(numericValue);
+        const previousValueValidity = isInputValid(previousValue);
+        const currentValueValidity  = isInputValid(numericValue);
 
         if (!previousValueValidity && currentValueValidity) {
             // if the previous input was invalid or empty, and now it is acceptable,
-            // we have one more completed input.
+            // we have one more completed input, so we will increment our count by one.
             progressIncrement = 1;
         } else if (previousValueValidity && !currentValueValidity) {
-            // ... conversely, the opposite implies that one input has gone bad
+            // ... conversely, the opposite implies that one input has gone bad,
+            // and we will decrement our progress count by one
             progressIncrement = -1;
         } else {
+            // nothing has happened.
             progressIncrement = 0;
         }
 
-        var progressCount = this.state.progressCount + progressIncrement;
-
-        return progressCount;
+        return this.state.progressCount + progressIncrement;
 
     }
 
     calculateInputCount() {
-        return Object.keys(this.state.inputs).length;
+        return Object.keys(this.state.numericInputValues).length;
     }
 
-    handleInputChange(event, numericValue) {
+    handleInputChange(event, stringValue, numericValue) {
 
         const target = event.target;
 
-        var inputs = Object.assign({}, this.state.inputs, {[target.name]: numericValue});
+        const stringInputValues  = Object.assign({}, this.state.stringInputValues, {[target.name]: stringValue});
+        const numericInputValues = Object.assign({}, this.state.numericInputValues, {[target.name]: numericValue});
         // Commentary on Object.assign vs other strategies for addressing nested objects in React's state:
         // https://stackoverflow.com/questions/29537299/react-how-do-i-update-state-item1-on-setstate-with-jsfiddle
         // This toy app is simple enough that nested objects aren't really needed, but I preferred
@@ -82,7 +91,8 @@ class App extends Component {
         // the number of inputs for this.
 
         this.setState({
-            inputs: inputs,
+            stringInputValues: stringInputValues,
+            numericInputValues: numericInputValues,
             progressCount: this.calculateProgressCount(target, numericValue)
         });
 
@@ -107,7 +117,6 @@ class App extends Component {
           <div className="main-app-body">
 
 
-
               <div className="progress-section">
 
                   <div className="container">
@@ -123,82 +132,17 @@ class App extends Component {
                   <br/>
 
 
-
-                  <div className="row investment-input-row">
-
-                      <div className="col-md-4">
-                          <label htmlFor="depositAmount" className="input-label">Amount of Deposit</label>
-                          <GenericTextInput name="depositAmount"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handleDollar}
-                                            inputAddonPrependChar="$"/>
-
-                      </div>
-
-                      <div className="col-md-4">
-                          <label htmlFor="marginalTaxRate" className="input-label">Current Marginal Tax Rate</label>
-                          <GenericTextInput name="marginalTaxRate"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handlePercentage}
-                                            valueCeiling={100}
-                                            inputAddonAppendChar="%"/>
-
-                      </div>
-
-                      <div className="col-md-4">
-                          <label htmlFor="averageRetirementTaxRate" className="input-label">Average Retirement Tax Rate</label>
-                          <GenericTextInput name="averageRetirementTaxRate"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handlePercentage}
-                                            valueCeiling={100}
-                                            inputAddonAppendChar="%"/>
-
-                      </div>
-
-
-                  </div>
-
-
-
-                  <div className="row investment-input-row">
-
-                      <div className="col-md-4">
-                          <label htmlFor="yearsInvested" className="input-label">Years Invested</label>
-                          <GenericTextInput name="yearsInvested"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handleInteger}/>
-
-                      </div>
-
-                      <div className="col-md-4">
-                          <label htmlFor="inflationRate" className="input-label">Inflation Rate</label>
-                          <GenericTextInput name="inflationRate"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handlePercentage}
-                                            inputAddonAppendChar="%"/>
-
-
-                      </div>
-
-                      <div className="col-md-4">
-                          <label htmlFor="returnOnInvestment" className="input-label">Return on Investment (% Annual Growth)</label>
-                          <GenericTextInput name="returnOnInvestment"
-                                            onChange={this.handleInputChange}
-                                            handleInput={handlePercentage}
-                                            inputAddonAppendChar="%"/>
-
-                      </div>
-
-
-                  </div>
-
+                  <InvestmentScenarioForm
+                        stringInputValues={this.state.stringInputValues}
+                        numericInputValues={this.state.numericInputValues}
+                        handleInputChange={this.handleInputChange}/>
 
               </div>
 
-              <InputCommentary inputs={this.state.inputs}/>
 
+              <InputCommentary inputs={this.state.numericInputValues}/>
 
-              <InvestmentReport inputs={this.state.inputs}
+              <InvestmentReport inputs={this.state.numericInputValues}
                                 progressCount={this.state.progressCount}
                                 inputCount={this.calculateInputCount()}/>
 

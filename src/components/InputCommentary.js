@@ -7,7 +7,7 @@ class InputCommentary extends React.Component {
 
     commentOnMarginalTaxRate() {
 
-        var estimatedTaxBracket = estimateIncomeByTaxRate(this.props.inputs.marginalTaxRate);
+        const estimatedTaxBracket = estimateIncomeByTaxRate(this.props.inputs.marginalTaxRate);
 
         if (isInputValid(this.props.inputs.marginalTaxRate)) {
             return <span>
@@ -28,7 +28,7 @@ class InputCommentary extends React.Component {
 
     commentOnRetirementTaxRate() {
 
-        var estimatedTaxBracket = estimateIncomeByTaxRate(this.props.inputs.averageRetirementTaxRate);
+        const estimatedTaxBracket = estimateIncomeByTaxRate(this.props.inputs.averageRetirementTaxRate);
 
         if (isInputValid(this.props.inputs.averageRetirementTaxRate)) {
             return <span>
@@ -92,15 +92,10 @@ class InputCommentary extends React.Component {
             </span>
         }
 
-
     }
 
 
-
-
-
     render () {
-
 
         return (
             <div className="container input-commentary-container panel">
@@ -115,10 +110,8 @@ class InputCommentary extends React.Component {
             </div>
         )
 
-
     }
 
 }
-
 
 export default InputCommentary;

@@ -85,11 +85,11 @@ class InvestmentReport extends React.Component {
                 <div className="row report-outcome-row">
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(RRSP.afterTaxDeposit())}
+                        {decorateDollarValue(RRSP.afterTaxDeposit)}
                     </div>
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(TFSA.afterTaxDeposit())}
+                        {decorateDollarValue(TFSA.afterTaxDeposit)}
                     </div>
                 </div>
 
@@ -103,11 +103,11 @@ class InvestmentReport extends React.Component {
 
                 <div className="row report-outcome-row">
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(RRSP.futureAccountValue())}
+                        {decorateDollarValue(RRSP.futureAccountValue)}
                     </div>
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(TFSA.futureAccountValue())}
+                        {decorateDollarValue(TFSA.futureAccountValue)}
                     </div>
                 </div>
 
@@ -123,11 +123,11 @@ class InvestmentReport extends React.Component {
                 <div className="row report-outcome-row">
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(RRSP.taxPaidUponWithdrawal())}
+                        {decorateDollarValue(RRSP.taxPaidUponWithdrawal)}
                     </div>
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(TFSA.taxPaidUponWithdrawal(), true)}
+                        {decorateDollarValue(TFSA.taxPaidUponWithdrawal, true)}
                     </div>
                 </div>
 
@@ -142,11 +142,11 @@ class InvestmentReport extends React.Component {
 
                 <div className="row report-outcome-row">
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(RRSP.afterTaxFutureAccountValue())}
+                        {decorateDollarValue(RRSP.afterTaxFutureAccountValue)}
                     </div>
 
                     <div className="col-md-6 report-outcome-value">
-                        {decorateDollarValue(TFSA.afterTaxFutureAccountValue())}
+                        {decorateDollarValue(TFSA.afterTaxFutureAccountValue)}
                     </div>
                 </div>
 

@@ -14,13 +14,13 @@ import {roundNumber} from "../utils/ReportDecoration";
 
 test('Calculate the after-tax value of a deposit, when tax is required', () => {
     const depositValue = 1000;
-    var outcome = calculateAfterTaxDepositValue(depositValue, 40, true);
+    const outcome = calculateAfterTaxDepositValue(depositValue, 40, true);
     expect(outcome).toEqual(600);
 });
 
 test('Calculate the after-tax value of a deposit, when tax is NOT required', () => {
     const depositValue = 1000;
-    var outcome = calculateAfterTaxDepositValue(depositValue, 40);
+    const outcome = calculateAfterTaxDepositValue(depositValue, 40);
     expect(outcome).toEqual(1000);
 });
 

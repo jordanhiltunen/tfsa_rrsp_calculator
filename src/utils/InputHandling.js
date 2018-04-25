@@ -6,7 +6,7 @@ function handleDollar(dollarInput) {
     dollarInput = preliminaryClean(dollarInput);
 
     // capture the numeric representation of the dollarInput
-    var numericValue = parseInt(dollarInput, 10);
+    let numericValue = parseInt(dollarInput, 10);
 
     // add thousands separator
     dollarInput = addThousandsSeparator(dollarInput);
@@ -19,10 +19,9 @@ function handleDollar(dollarInput) {
         numericValue: numericValue
     }
 
-
 }
 
-function handlePercentage(percentageValue, percentageCeiling) {
+function handlePercentage(percentageString, percentageCeiling) {
 
     // on percentageCeiling:
     // ------------------------
@@ -31,47 +30,43 @@ function handlePercentage(percentageValue, percentageCeiling) {
     // > Marginal Tax Rate    - can't exceed 100% (barring some strange and kafka-esque dystopian shift)
     // > Return on Investment - no need to constrain
 
-
     // strip all non-numeric characters except decimals
-    percentageValue = percentageValue.replace(/[^0-9.]/g,'');
+    percentageString = percentageString.replace(/[^0-9.]/g,'');
 
     // remove the first decimal, if there are two or more.
-    if ((percentageValue.match(/\./g) || []).length > 1) {
-        percentageValue = percentageValue.replace('.', ''); // replace the first instance
+    if ((percentageString.match(/\./g) || []).length > 1) {
+        percentageString = percentageString.replace('.', ''); // replace the first instance
     }
 
     // convert string to float
-    let floatPercentage = parseFloat(percentageValue);
+    let floatPercentage = parseFloat(percentageString);
 
     // enforce the value ceiling - prevent user input from
     // exceeding a certain value, if requested by the caller.
     if (percentageCeiling && floatPercentage > 100) {
-
         floatPercentage = 100.0;
-        percentageValue = '100';
-
+        percentageString = '100';
     }
 
-
     return {
-        decoratedValue: percentageValue,
+        decoratedValue: percentageString,
         numericValue: floatPercentage
     }
 
 }
 
-function handleInteger(userInput) {
+
+
+function handleInteger(integerString) {
 
     // preliminary cleaning (non-numeric characters, leading zeroes)
-    userInput = preliminaryClean(userInput);
+    integerString = preliminaryClean(integerString);
 
     // capture the numeric representation of the userInput
-    var numericValue = parseInt(userInput, 10);
-
-    // return formatted string
+    let numericValue = parseInt(integerString, 10);
 
     return {
-        decoratedValue: userInput,
+        decoratedValue: integerString,
         numericValue: numericValue
     }
 
@@ -91,7 +86,7 @@ function preliminaryClean(userInput) {
 
 function isInputValid(numericInput) {
 
-    var validityCheck = (numericInput != null && !isNaN(numericInput)) ? true : false;
+    let validityCheck = (numericInput != null && !isNaN(numericInput));
 
     return validityCheck;
 

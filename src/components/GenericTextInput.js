@@ -6,11 +6,6 @@ class GenericTextInput extends Component {
 
     constructor() {
         super();
-        this.state = {
-            rawValue: '',
-            decoratedValue: '',
-            numericValue: '0',
-            validated: false };
 
         this.prependAddon = this.prependAddon.bind(this);
         this.appendAddon  = this.appendAddon.bind(this);
@@ -19,27 +14,11 @@ class GenericTextInput extends Component {
 
     handleInputChange = (event) => {
 
-        // GenericTextInput aims to do two things with user input:
-        // 1.) constrain input (forced validation) and represent values in an intuitive way
-        // 2.) maintain a separate numeric representation of user input for the generation of the report
-        // ...accordingly, whenever the input changes, we update both a decoratedValue, and a numericValue.
-
-        var valueCollection  = this.props.handleInput(event.target.value, this.props.valueCeiling);
-
-        var decoratedValue   = valueCollection.decoratedValue;
-        var numericValue     = valueCollection.numericValue;
-
-
-        this.setState(
-            {
-                rawValue: event.target.value,
-                decoratedValue: decoratedValue,
-                numericValue: numericValue,
-                validated: isInputValid(numericValue)
-            });
+        // determine the string and numeric representation of the user's input
+        const valueCollection = this.props.handleInput(event.target.value, this.props.valueCeiling);
 
         // return the numeric value to the parent component
-        this.props.onChange(event, numericValue);
+        this.props.handleInputChange(event, valueCollection.decoratedValue, valueCollection.numericValue);
 
     };
 
@@ -64,7 +43,7 @@ class GenericTextInput extends Component {
     }
 
     inputStatusClass() {
-        if (this.state.validated) {
+        if (isInputValid(this.props.numericValue)) {
             return "input-validated";
         } else {
             return "input-incomplete";
@@ -77,7 +56,9 @@ class GenericTextInput extends Component {
             {this.prependAddon()}
 
             <input name={this.props.name} className={"form-control " + this.inputStatusClass()}
-                   type="text" value={this.state.decoratedValue} onChange={this.handleInputChange} />
+                   type="text"
+                   value={this.props.stringValue}
+                   onChange={this.handleInputChange.bind(this)} />
 
             {this.appendAddon()}
 

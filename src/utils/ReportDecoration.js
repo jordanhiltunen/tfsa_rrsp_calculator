@@ -38,8 +38,11 @@ function roundNumber(numberToRound, numberOfDecimalPlaces) {
 }
 
 function addThousandsSeparator(value) {
+
+    value = value.toString();
+
     // add thousands separator
-    var rgx = /(\d+)(\d{3})/;
+    const rgx = /(\d+)(\d{3})/;
     while (rgx.test(value)) {
         value = value.replace(rgx, '$1,$2');
     }

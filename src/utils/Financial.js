@@ -2,7 +2,7 @@ import {isInputValid} from "../utils/InputHandling";
 
 function calculateAfterTaxDepositValue(depositAmount, marginalTaxRate, depositTaxable) {
 
-    var afterTaxDepositValue = depositAmount;
+    let afterTaxDepositValue = depositAmount;
 
     if (depositTaxable) {
         afterTaxDepositValue = (depositAmount * (1 - percentageToDecimal(marginalTaxRate)));
@@ -14,7 +14,7 @@ function calculateAfterTaxDepositValue(depositAmount, marginalTaxRate, depositTa
 
 function calculateFutureAccountValue(principalInvestment, returnOnInvestment, inflationRate, yearsInvested) {
 
-    var realRateOfReturn = calculateRealRateOfReturn(returnOnInvestment, inflationRate);
+    let realRateOfReturn = calculateRealRateOfReturn(returnOnInvestment, inflationRate);
 
     // futureValue = presentValue x (1 + rate) ^ periods
     return (principalInvestment * Math.pow((1 + realRateOfReturn), yearsInvested));
@@ -23,7 +23,7 @@ function calculateFutureAccountValue(principalInvestment, returnOnInvestment, in
 
 function calculateTaxPaidUponWithdrawal(accountValue, retirementTaxRate, withdrawTaxable) {
 
-    var withdrawalTax = 0;
+    let withdrawalTax = 0;
     retirementTaxRate = retirementTaxRate || 0;
 
     if (withdrawTaxable) {
@@ -50,7 +50,7 @@ function calculateRealRateOfReturn(nominalRate, inflationRate) {
     nominalRate   = nominalRate || 0;
     inflationRate = inflationRate || 0;
 
-    var realRateOfReturn = ((1 + percentageToDecimal(nominalRate))/(1 + percentageToDecimal(inflationRate))) - 1;
+    let realRateOfReturn = ((1 + percentageToDecimal(nominalRate))/(1 + percentageToDecimal(inflationRate))) - 1;
     return realRateOfReturn;
 
 }
@@ -68,7 +68,7 @@ function estimateIncomeByTaxRate(taxRate) {
     // combined Federal & British Columbia Tax Brackets (2018)
     // https://www.taxtips.ca/taxrates/bc.htm
 
-    var taxBracket = "unknown";
+    let taxBracket = "unknown";
 
     const taxBrackets = [
         [0.0, "0 - $39,676"],
